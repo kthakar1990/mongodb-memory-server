@@ -121,18 +121,22 @@ export default class MongoInstance {
   async kill(): Promise<MongoInstance> {
     if (this.childProcess && !this.childProcess.killed) {
       await new Promise((resolve) => {
-        if (this.childProcess) {
-          this.childProcess.once(`exit`, resolve);
-          this.childProcess.kill();
-        }
+        // if (this.childProcess) {
+        // @ts-ignore
+        this.childProcess.once(`exit`, resolve);
+        // @ts-ignore
+        this.childProcess.kill();
+        //}
       });
     }
     if (this.killerProcess && !this.killerProcess.killed) {
       await new Promise((resolve) => {
-        if (this.killerProcess) {
-          this.killerProcess.once(`exit`, resolve);
-          this.killerProcess.kill();
-        }
+        // if (this.killerProcess) {
+        // @ts-ignore
+        this.killerProcess.once(`exit`, resolve);
+        // @ts-ignore
+        this.killerProcess.kill();
+        // }
       });
     }
     return this;
